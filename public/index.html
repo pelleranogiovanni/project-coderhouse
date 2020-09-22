@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/app.css">
+    
+    <title>Project Coder</title>
+</head>
+<body>
+<div class="container mx-auto">
+    <!-- start header -->
+    <header class="text-gray-700 font-montserrat font-medium">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <!-- start navbar -->
+            <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto text-center">
+                <a class="mr-5 hover:text-gray-900">Home</a>
+                <a class="mr-5 hover:text-gray-900">Menú</a>
+            </nav>
+            <!-- end navbar -->
+            
+            <a class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+            <svg aria-hidden="true" data-prefix="fas" data-icon="hamburger" class="svg-inline--fa fa-hamburger fa-w-16 w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 256H48a48 48 0 000 96h416a48 48 0 000-96zm16 128H32a16 16 0 00-16 16v16a64 64 0 0064 64h352a64 64 0 0064-64v-16a16 16 0 00-16-16zM58.64 224h394.72c34.57 0 54.62-43.9 34.82-75.88C448 83.2 359.55 32.1 256 32c-103.54.1-192 51.2-232.18 116.11C4 180.09 24.07 224 58.64 224zM384 112a16 16 0 11-16 16 16 16 0 0116-16zM256 80a16 16 0 11-16 16 16 16 0 0116-16zm-128 32a16 16 0 11-16 16 16 16 0 0116-16z"/></svg>
+            <span class="ml-3 text-xl">projectCode</span>
+            </a>
+            <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+                <button class="show-modal inline-flex items-center border-2 border-gray-300 p-3 focus:outline-none hover:bg-gray-300 rounded-full text-base mt-4 md:mt-0">
+                    <svg aria-hidden="true" data-prefix="fas" data-icon="shopping-cart" class="svg-inline--fa fa-shopping-cart fa-w-18 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"/></svg>
+                </button>
+                <span class="absolute bg-gray-700 rounded-full text-white" id="cantidadPedido"></span>
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+
+    <div class="md:flex border-t border-indigo-100">
+        <section class=" py-3 mx-6 w-full md:w-8/12">
+            <!-- menú comidas-->
+            <div class="w-full mx-auto text-center font-montserrat py-3 mb-12 border-b">
+                <p class="text-gray-700">MENÚ DE COMIDAS</p>
+                <div class="container px-5 py-6 w-full mx-auto">
+                    <div class="flex flex-wrap -m-4" id="productContainer">
+                        <!-- card product -->
+                            
+                        <!-- end card -->                
+                    </div>
+                </div>            
+            </div>
+            <!-- end menu burgers -->
+        </section>
+
+        <aside class="w-full md:w-4/12">
+            <!-- Mi pedido -->
+            <div class="container px-5 py-5 w-full mt-6 border">
+                <div class="flex items-center justify-between border-b">
+                    <p class="font-semibold text-2xl">Mi Pedido</p>
+                    <button class="px-4 rounded-sm bg-indigo-500 text-white" id="clearOrder" >Limpiar</button>                
+                </div>
+                <div class="mt-5 w-full">
+                    <table class="table-auto w-full" id="table-container">
+                        <thead class="text-left">
+                            <tr class="py-3 justify-between">
+                                <th class="">Producto</th>
+                                <th class="">Precio</th>                            
+                                <th class="">Del</th>                            
+                            </tr>
+                        </thead>
+                        <tbody id="selectedProductsContainer">
+                            
+                        </tbody>                    
+                    </table>
+                </div>
+                <div class="flex mx-auto w-full items-center py-1 mt-8 border-t justify-between">
+                    <p class="font-semibold">Total:</p>             
+                    <p class="text-base mr-16" id="totalPedido"></p>
+                </div>            
+            </div>
+            <!-- end mi pedido -->
+
+        </aside>
+    </div>
+
+    <!-- Toast Notification Success-->
+    <div class="right-0 top-0 m-5 fixed hidden" id="toast-notification">        
+        <div class="flex items-center bg-green-500 border-l-4 border-green-700 py-2 px-3 shadow-md mb-2">
+            <!-- icons -->
+           <div class="text-green-500 rounded-full bg-white mr-3">
+             <svg width="1.8em" height="1.8em" viewBox="0 0 16 16" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+             </svg>
+           </div>
+           <!-- message -->
+           <div class="text-white max-w-xs ">
+             Carrito vacío!
+           </div>
+         </div>
+    </div>
+    <!-- End Toast Notification Success-->
+
+    
+    <!-- Modal -->
+    <div class="modal h-screen w-full fixed left-0 top-0 justify-center items-center bg-black bg-opacity-50 hidden">
+        <!-- modal -->
+        <div class="bg-white rounded shadow-lg md:w-1/2 w-auto mx-auto my-32 md:my-40 justify-center items-center">
+          <!-- modal header -->
+          <div class="border-b px-4 py-2 flex justify-between items-center">
+            <h3 class="font-semibold text-lg">Modal Title</h3>
+            <button class="text-black close-modal">&cross;</button>
+          </div>
+          <!-- modal body -->
+          <div class="p-3">
+            
+          </div>
+          <div class="flex justify-end items-center w-100 border-t p-3">
+            <button class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 close-modal">Cancel</button>
+            <button class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white">Oke</button>
+          </div>
+        </div>
+      </div>
+    <!-- end Modal -->
+</div>
+
+<!-- jQuery -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+<script src="/public/js/data.js"></script>
+<script src="/public/js/data2.json"></script>
+<script src="/public/js/domBuilder.js"></script>
+<script src="/public/js/app.js"></script>
+</body>
+</html>
