@@ -3,6 +3,7 @@ const domBuilder = new DOMBuilder(); //instancio el objeto como global
 
 //Variables globales
 let totalPedido = 0;
+let pTotalCart = document.getElementById('cantidadPedido');
 
 
 
@@ -25,7 +26,6 @@ function buildProductPedido(product){
 }
 
 
-
 //funcion ejecutada al hacer click en alguno de los botones
 function onSelectClick(event){
     
@@ -38,10 +38,10 @@ function onSelectClick(event){
     buildSelectedProducts();
     calcularTotalPedido(selectedProduct); //llamo a la funcion y le envío el producto seleccionado para sumar  
 
-    let cantidad = $('#cantidadPedido');
-    let totalOrder = selectedProducts.length;
     
-    cantidad.innerHTML = 'test';
+    totalPedidoCart = selectedProducts.length;
+    console.log(totalPedidoCart)
+    pTotalCart.textContent = totalPedidoCart;
 
     removeItemOrder();
 }
@@ -68,6 +68,8 @@ function buildSelectedProducts(){
 //funcion limpiar pedido completo con jQuery
 $('#clearOrder').click( () => {
     selectedProducts = [];
+    totalPedidoCart = selectedProducts.length;
+    pTotalCart.textContent = totalPedidoCart;
 
     let new_tbody = document.createElement('tbody');
     new_tbody.setAttribute('id', 'selectedProductsContainer');
@@ -103,13 +105,10 @@ function calcularTotalPedido(productSelected){
 }
 
 
-// ************** Nuevo codigo ajax
-
 //funcion ejecutada al cargar el DOM, para cargar los prodcutos
 $(document).ready(() => {
 
     let card = document.querySelector('#productContainer');
-    // card.innerHTML = '';
 
     $.ajax({
         method: 'GET',
@@ -117,18 +116,17 @@ $(document).ready(() => {
         dataType: 'json',
         success: function(response) {
             response.forEach(element => {
-                
 
                 card.innerHTML += `
-                <div class="md:w-1/3 p-4 w-full">
+                <div class="md:w-1/3 p-4 w-full my-6">
                     <a class="block relative h-48 rounded overflow-hidden">
-                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="${element.image}">
+                    <img alt="ecommerce" class="object-cover object-center w-full h-full block transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105" src="${element.image}">
                     </a>
                     <div class="mt-4 text-left px-2">                      
                     <h2 class="text-gray-800 title-font text-lg font-medium">${element.name}</h2>
                     <div class="flex items-center justify-between">
                         <p class="mt-1 text-gray-600">${element.price}</p>
-                        <button class="focus:outline-none btnProduct" id="${element.id}">
+                        <button class="focus:outline-none btnProduct transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105" id="${element.id}">
                             <svg aria-hidden="true" data-prefix="fas" data-icon="plus" class="hover:bg-indigo-700 svg-inline--fa fa-plus fa-w-14 w-8 h-8 text-white p-2 bg-indigo-500 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/></svg>
                         </button>                          
                     </div>                      
@@ -142,37 +140,32 @@ $(document).ready(() => {
         
     });
 
+    //al hacer click en agregar producto
     $('body').on('click', '.btnProduct', function(){
-        // console.log(this.id);
-        onSelectClick(this);
+        onSelectClick(this);  
     });
         
 });
 
 
 
-
-
-
-
+//Script Modal
 const modal = document.querySelector('.modal');
 
 const showModal = document.querySelector('.show-modal');
 const closeModal = document.querySelectorAll('.close-modal');
 
 showModal.addEventListener('click', function (){
-    
-//    modal.classList.remove('hidden')
-$('.modal').fadeIn();
+    $('.modal').fadeIn();
   
 });
 
 closeModal.forEach(close => {
   close.addEventListener('click', function (){
     $('.modal').fadeOut();
-    // modal.classList.add('hidden')
   });
 });
+//End Modal
 
 
 
