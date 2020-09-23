@@ -4,7 +4,8 @@ const domBuilder = new DOMBuilder(); //instancio el objeto como global
 //Variables globales
 let totalPedido = 0;
 let pTotalCart = document.getElementById('cantidadPedido');
-
+let selectedProducts = []; //productos que voy a ir cargando
+let products;
 
 
 //funcion agregar html producto a Mi Pedido
@@ -112,10 +113,12 @@ $(document).ready(() => {
 
     $.ajax({
         method: 'GET',
-        url: './js/data2.json',        
+        url: './js/data.json',        
         dataType: 'json',
         success: function(response) {
-            response.forEach(element => {
+            products = response;
+           
+            products.forEach(element => {
 
                 card.innerHTML += `
                 <div class="md:w-1/3 p-4 w-full my-6">
@@ -146,7 +149,6 @@ $(document).ready(() => {
     });
         
 });
-
 
 
 //Script Modal
