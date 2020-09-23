@@ -107,9 +107,7 @@ function calcularTotalPedido(productSelected){
 
 
 //funcion ejecutada al cargar el DOM, para cargar los prodcutos
-$(document).ready(() => {
-
-    
+$(document).ready(() => {   
 
     $.ajax({
         method: 'GET',
@@ -132,8 +130,6 @@ $(document).ready(() => {
 
 
 //Script Modal
-const modal = document.querySelector('.modal');
-
 const showModal = document.querySelector('.show-modal');
 const closeModal = document.querySelectorAll('.close-modal');
 
