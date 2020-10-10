@@ -8,25 +8,6 @@ let selectedProducts = []; //productos que voy a ir cargando
 let products;
 
 
-//funcion agregar html producto a Mi Pedido
-function buildProductPedido(product){
-    const tr = document.createElement('tr');
-    const tdProduct = document.createElement('td');
-    const tdPrice = document.createElement('td');
-    const buttonDelete = domBuilder.buttonDelete(product.id);
-
-    tdProduct.textContent = product.name;
-    tdPrice.textContent = '$ ' + product.price;
-
-    tr.appendChild(tdProduct);
-    tr.appendChild(tdPrice);
-    tr.appendChild(buttonDelete);
-
-    return tr;
-    
-}
-
-
 //funcion ejecutada al hacer click en alguno de los botones
 function onSelectClick(event){
     
@@ -36,39 +17,48 @@ function onSelectClick(event){
 
     selectedProducts.push(selectedProduct); //pusheo en el array selectedProducts los productos que voy seleccionando
     
-    buildSelectedProducts();
-    calcularTotalPedido(selectedProduct); //llamo a la funcion y le envío el producto seleccionado para sumar  
+
+    domBuilder.buildProductOrder(selectedProduct);
+    buildTotalPedido(); //llamo a la funcion para calcular y construir el total del pedido
 
     
     totalPedidoCart = selectedProducts.length;
-    console.log(totalPedidoCart)
+    
     pTotalCart.textContent = totalPedidoCart;
 
     removeItemOrder();
+    
 }
 
 
 //funcion eliminar un item del pedido con jQuery
 function removeItemOrder(){
-    $('.btnProductDelete').on('click',function () {
-        $(this).parent().remove(); 
+    $('.btnProductDelete').on('click',function () {        
+        $(this).parent().parent().remove();
+
+        let id = this.getAttribute('id');
+        
+        selectedProducts.forEach(element => {
+            if(id == element.id){
+            //    console.log(element.name)
+               var index = selectedProducts.map(product => product.name).indexOf(element.name)
+               selectedProducts.splice(index, 1);
+            }
+            
+        });
+
+        
+        sumTotalOrder(selectedProducts);
+        buildTotalPedido();
+
     });   
 }
 
 
-//funcion agregar product seleccionado en el html del pedido
-function buildSelectedProducts(){
-    const selectedProductsContainer = document.getElementById('selectedProductsContainer');
-    const lastProduct = selectedProducts[selectedProducts.length-1];
-
-    const card = buildProductPedido(lastProduct);
-    selectedProductsContainer.appendChild(card);
-}
-
 
 //funcion limpiar pedido completo con jQuery
 $('#clearOrder').click( () => {
-    selectedProducts = [];
+    selectedProducts = [];    
     totalPedidoCart = selectedProducts.length;
     pTotalCart.textContent = totalPedidoCart;
 
@@ -90,17 +80,20 @@ $('#clearOrder').click( () => {
         setTimeout(function() {
             $("#toast-notification").fadeOut();           
     },2000);
+
+    //Funcion para verificar el estado del pedido
+    statusPedido();
 });
 
 
 
 
-//funcion calcular total del pedido
-function calcularTotalPedido(productSelected){
+//funcion calcular y crear el html del total del pedido
+function buildTotalPedido(){
 
     pTotal = document.getElementById('totalPedido');
 
-    totalPedido = totalPedido + productSelected.price;
+    totalPedido = calcularTotalPedido(); //llamo a la función que calcula el valor total
 
     pTotal.textContent = '$ ' + totalPedido;
 }
@@ -125,6 +118,9 @@ $(document).ready(() => {
     $('body').on('click', '.btnProduct', function(){
         onSelectClick(this);  
     });
+
+    //Funcion para verificar el estado del pedido
+    statusPedido();
         
 });
 

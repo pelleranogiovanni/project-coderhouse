@@ -30,13 +30,26 @@ const DOMBuilder = function(){
     }
     
 
-    //button delet
-    this.buttonDelete = function(id){
-        const button = document.createElement('button');
-        button.textContent = "x";
-        button.classList.add('btnProductDelete', 'h-5', 'w-5', 'focus:outline-none', 'bg-gray-500', 'rounded-full', 'text-white', 'font-bold', 'hover:bg-indigo-700');
-        button.setAttribute('data-id', id); //asigno un id al boton, el id que recibo por parametro
-        return button;
+    //funcion agregar producto al pedido
+    this.buildProductOrder = function(selectedProduct){
+        const selectedProductsContainer = document.getElementById('selectedProductsContainer');
+        
+        selectedProductsContainer.innerHTML += `
+        <tr>                            
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                <div class="text-sm leading-5 text-blue-900">${selectedProduct.name}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                <div class="text-sm leading-5 text-blue-900">${selectedProduct.price}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
+                <button id="${selectedProduct.id}" class="btnProductDelete px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">Eliminar</button>
+            </td>
+        </tr>
+        `;
+        
+        //Funcion para verificar el estado del pedido
+        statusPedido();
     }
 
 }

@@ -48,8 +48,34 @@
                 </div>            
             </div>
             <!-- end menu burgers -->
+
+            <div class="mt-5 w-full">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>                            
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Producto</th> 
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Precio</th> 
+                            <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr>                            
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                                <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                                <div class="text-sm leading-5 text-blue-900">Damilare Anjorin</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
+                                <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </div>
+    
 
     <!-- Toast Notification Success-->
     <div class="right-0 top-0 m-5 mt-16 fixed hidden z-50" id="toast-notification">        
@@ -72,14 +98,14 @@
     <!-- Modal -->
     <div class="modal h-screen w-full fixed left-0 top-0 justify-center items-center bg-black bg-opacity-50 hidden">
         <!-- modal -->
-        <div class="bg-white rounded shadow-lg md:w-1/2 w-auto mx-auto my-32 md:my-40 justify-center items-center">
+        <div class="bg-white rounded shadow-lg md:w-9/12 w-auto h-auto mx-auto my-32 md:my-40 justify-center items-center">
           <!-- modal header -->
           <div class="border-b px-4 py-2 flex justify-between items-center">
             <h3 class="font-semibold text-lg">Mi Pedido</h3>
             <button class="text-black close-modal">&cross;</button>
           </div>
           <!-- modal body -->
-          <div class="p-3">
+          <div class="p-3" id="body-modal">
                  <!-- Mi pedido -->
             <div class="container px-5 py-5 w-full mt-6 border">
                 <div class="flex items-center justify-between border-b">
@@ -87,17 +113,17 @@
                     <button class="px-4 rounded-sm bg-indigo-500 text-white hover:bg-gray-700 focus:outline-none focus:bg-indigo-700" id="clearOrder" >Vaciar</button>                
                 </div>
                 <div class="mt-5 w-full">
-                    <table class="table-auto w-full mt-2" id="table-container">
-                        <thead class="text-left">
-                            <tr class="py-3 justify-between">
-                                <th class="">Producto</th>
-                                <th class="">Precio</th>                            
-                                <th class="">Quitar</th>                            
+                    <table class="w-full" id="table-container">
+                        <thead>
+                            <tr>                            
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Producto</th> 
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Precio</th> 
+                                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
                             </tr>
                         </thead>
-                        <tbody id="selectedProductsContainer">
+                        <tbody class="bg-white" id="selectedProductsContainer">
                             
-                        </tbody>                    
+                        </tbody>
                     </table>
                 </div>
                 <div class="flex mx-auto w-full items-center py-1 mt-8 border-t justify-between">
@@ -107,14 +133,29 @@
             </div>
             <!-- end mi pedido -->
           </div>
+          <!-- end body -->
+
+          <!-- body carro sin productos -->
+            <div class="hidden bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 shadow-md my-2" role="alert" id="body-modal-info">
+                <div class="flex">
+                <svg class="h-6 w-6 text-teal mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
+                <div>
+                    <p class="font-bold">¡Tu carro se encuentra vacío!</p>
+                    <p class="text-sm">Recorre nuestras comidas y no dudes en comprar.</p>
+                </div>
+                </div>
+            </div>
+            <!-- end body carro sin productos -->
+
           <div class="flex justify-end items-center w-100 border-t p-3">
             <button class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 close-modal">Cerrar</button>
-            <button class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white">Pedir</button>
+            <button class="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white" id="button-pedir">Pedir</button>
           </div>
         </div>
       </div>
     <!-- end Modal -->
 </div>
+
 
 <!-- jQuery -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
@@ -122,6 +163,7 @@
 
 <script src="/public/js/data.json"></script>
 <script src="/public/js/domBuilder.js"></script>
+<script src="/public/js/functions.js"></script>
 <script src="/public/js/app.js"></script>
 </body>
 </html>
