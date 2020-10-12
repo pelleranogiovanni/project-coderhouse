@@ -10,8 +10,6 @@ function calcularTotalPedido(){
     selectedProducts.forEach(element => {
         totalPedido = totalPedido + element.price;
     });
-
-    console.log(totalPedido)
     
     //Funcion para verificar el estado del pedido
     statusPedido();
@@ -35,4 +33,58 @@ function statusPedido(){
         bodyModalInfo.removeClass('hidden');
         buttonPedir.addClass('hidden');
     }
+}
+
+// Funcion para vaciar el carrito
+function limpiarCarro(){
+    selectedProducts = [];    
+    totalPedidoCart = selectedProducts.length;
+    pTotalCart.textContent = totalPedidoCart;
+
+    let new_tbody = document.createElement('tbody');
+    new_tbody.setAttribute('id', 'selectedProductsContainer');
+    let old_tbody = document.getElementById('selectedProductsContainer');
+    let tableNode = document.getElementById('table-container');
+
+    //vacío la variable totalPedido y imppio el contenido total
+    pTotal = document.getElementById('totalPedido');
+    pTotal.textContent = '';
+    totalPedido = 0;
+    
+    tableNode.replaceChild(new_tbody, old_tbody);
+
+}
+
+//Funcion generar html del resumen de compra
+function resumenCompra(fomrFullData){
+    const cardResumen = document.getElementById('card-resumen');
+    cardResumen.innerHTML += `
+        <div class="flex justify-between md:w-1/2">
+            <p>Comprador</p>
+            <p>${fomrFullData.nombre + ' ' + fomrFullData.apellido}</p>
+        </div>
+        <div class="flex justify-between md:w-1/2">
+            <p>DNI</p>
+            <p>${fomrFullData.dni}</p>
+        </div>
+        <div class="flex justify-between md:w-1/2">
+            <p>Domicilio</p>
+            <p>${fomrFullData.domicilio}</p>
+        </div>
+        <div class="flex justify-between md:w-1/2">
+            <p>Teléfono</p>
+            <p>${fomrFullData.telefono}</p>
+        </div>
+        <div class="flex justify-between md:w-1/2">
+            <p>Total compra</p>
+            <p>${fomrFullData.totalPedido}</p>
+        </div>        
+        `;
+}
+
+
+// funcion reiniciar compra
+function resetCompra(){
+    limpiarCarro();  
+    location.reload(true);
 }

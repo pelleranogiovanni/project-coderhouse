@@ -6,26 +6,27 @@
     <link rel="stylesheet" href="/public/css/app.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <title>MyFood</title>
-
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
+    <title>Project Coder</title>
 </head>
 <body>
 <div class="container mx-auto">
     <!-- start header -->
-    <header class="text-gray-700 font-montserrat font-medium w-full">
+    <header class="text-gray-700 font-montserrat font-medium">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
             <a class="flex lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center justify-left mb-4 md:mb-0">
                 <svg aria-hidden="true" data-prefix="fas" data-icon="hamburger" class="svg-inline--fa fa-hamburger fa-w-16 w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M464 256H48a48 48 0 000 96h416a48 48 0 000-96zm16 128H32a16 16 0 00-16 16v16a64 64 0 0064 64h352a64 64 0 0064-64v-16a16 16 0 00-16-16zM58.64 224h394.72c34.57 0 54.62-43.9 34.82-75.88C448 83.2 359.55 32.1 256 32c-103.54.1-192 51.2-232.18 116.11C4 180.09 24.07 224 58.64 224zM384 112a16 16 0 11-16 16 16 16 0 0116-16zM256 80a16 16 0 11-16 16 16 16 0 0116-16zm-128 32a16 16 0 11-16 16 16 16 0 0116-16z"/></svg>
-                <span class="ml-3 text-xl">MyFood</span>
+                <span class="ml-3 text-xl">projectCode</span>
                 </a>
 
+            <!-- start navbar -->
+            <nav class="flex items-center text-base text-center">
+                <a class="mr-5 hover:text-gray-900">Home</a>
+                <a class="mr-5 hover:text-gray-900">Menú</a>
+            </nav>
+            <!-- end navbar -->         
+
             <div class="mx-4 mr-4 items-center pt-1 rounded-full text-bluedark-500 hover:text-gray-600 focus:shadow-md focus:outline-none flex">
-                <button class="outline-none show-modal inline-flex items-center border-2 border-gray-300 p-3 focus:outline-none hover:bg-gray-300 rounded-full text-base mt-4 md:mt-0">
+                <button class="show-modal inline-flex items-center border-2 border-gray-300 p-3 focus:outline-none hover:bg-gray-300 rounded-full text-base mt-4 md:mt-0">
                     <svg aria-hidden="true" data-prefix="fas" data-icon="shopping-cart" class="svg-inline--fa fa-shopping-cart fa-w-18 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"/></svg>
                 </button>                
                 <p class="absolute bg-red-600 justify-center rounded-full px-1 mt-6 ml-8 text-white text-xs" id="cantidadPedido">0</p>                
@@ -35,7 +36,7 @@
     <!-- end header -->
 
     <div class="md:flex border-t border-indigo-100">
-        <section class=" py-3 mx-auto w-full">
+        <section class=" py-3 mx-10 w-full">
             <!-- menú comidas-->
             <div class="w-full mx-auto text-center font-montserrat py-3 mb-12 border-b">
                 <p class="text-gray-700">MENÚ DE COMIDAS</p>
@@ -109,8 +110,10 @@
                 </div>
         
                 <div class="w-10 h-10 mx-auto step-2 bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
-                    <span class="text-center text-gray-600 w-full items-center">
-                    <svg aria-hidden="true" data-prefix="far" data-icon="user"  class="ml-2 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"/></svg>
+                    <span class="text-center text-gray-600 w-full">
+                    <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path class="heroicon-ui" d="M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z"/>
+                    </svg>
                     </span>
                 </div>
                 </div>
@@ -129,7 +132,9 @@
         
                 <div class="w-10 h-10 mx-auto step-3 bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
                     <span class="text-center text-gray-600 w-full">
-                        <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" class="ml-2 svg-inline--fa fa-credit-card fa-w-18 h-6 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/></svg>
+                    <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path class="heroicon-ui" d="M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z"/>
+                    </svg>
                     </span>
                 </div>
                 </div>
@@ -155,7 +160,7 @@
                 </div>
                 </div>
         
-                <div class="text-xs text-center md:text-base">Finalizado</div>
+                <div class="text-xs text-center md:text-base">Finished</div>
             </div>
             </div>
         </div>
@@ -200,80 +205,72 @@
         <!-- End body -->
 
         <!-- Form Mis Datos -->
-        <div class="w-full md:w-10/12 mx-auto p-5 hidden" id="step1">
+        <form action="">
+        <div class="w-full md:w-10/12 mx-auto p-5 hidden" id="form-datos">
             <p class="text-gray-800 text-lg font-semibold py-3">Datos Personales</p>
-            <form name="step1">
-            <div class="w-full flex">
-                <div class="-mx-3 md:flex mb-3 w-full">
-                    <div class="md:w-1/2 px-3 mb-3 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                        Apellido
-                        </label>
-                        <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="apellido" name="apellido" type="text" placeholder="Apellido">                    
-                    </div>
-                    <div class="md:w-1/2 px-3 mb-3 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                        Nombre
-                        </label>
-                        <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" type="text" name="nombre" id="nombre" placeholder="Nombre">
-                    </div>
-                </div>               
-            </div>
-
-            <div class="w-full flex">
-                <div class="-mx-3 md:flex mb-3 w-full">
-                    <div class="md:w-1/2 px-3 mb-3 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                        DNI
-                        </label>
-                        <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="dniCliente" name="dniCliente" type="text" placeholder="DNI">                    
-                    </div>
-                    <div class="md:w-1/2 px-3 mb-3 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                        Teléfono
-                        </label>
-                        <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" type="text" name="telefono" id="telefono" placeholder="Teléfono">
-                    </div>
+            <div class="-mx-3 md:flex mb-6">
+                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Apellido
+                    </label>
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Apellido" required>
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
+                </div>
+                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Nombre
+                    </label>
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Nombre">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
             </div>
 
-            <div class="w-full flex">
-                <div class="-mx-3 w-full md:flex mb-3">
-                    <div class="w-full px-3 mb-3 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                        Email
-                        </label>
-                        <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="email" name="email" type="email" placeholder="Email">                    
-                    </div>                   
+            <div class="-mx-3 md:flex mb-6">
+                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    DNI
+                    </label>
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="DNI">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
+                </div>
+                <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Teléfono
+                    </label>
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Teléfono">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
             </div>
-
             <div class="ml-auto mt-6 w-full text-right">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Siguiente</button>
-                <button class="reset-compra bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    Cancelar Compra
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                    Continuar
+                </button>
+                <input type="submit" value="Enviar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="button-datos">
+                <button class="close-modal bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    Cerrar
                 </button>
             </div>
-        </form>
         </div>
+        </form>
         <!-- End Form Mis Datos -->
 
         <!-- Form Domicilio -->
-        <div class="w-full md:w-10/12 mx-auto p-5 hidden" id="step2">
-            <form name="step2">
+        <div class="w-full md:w-10/12 mx-auto p-5 hidden" id="form-domicilio">
             <p class="text-gray-800 text-lg font-semibold py-3">Domicilio</p>
             <div class="-mx-3 md:flex mb-6">
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Barrio (Opcional)
+                    Barrio
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="barrio" name="barrio" type="text" placeholder="Barrio">                    
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Barrio">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Domicilio/Calle
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" type="text" name="domicilio" id="domicilio" placeholder="Domicilio/Calle">
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Domicilio/Calle">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
             </div>
 
@@ -282,43 +279,45 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Número
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="numeroDomicilio" name="numeroDomicilio" type="text" placeholder="Número">
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Número">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Piso/Departamento (Opcional)
+                    Piso/Departamento
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="piso" name="piso" type="text" placeholder="Piso/Departamento">                    
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Piso/Departamento">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
             </div>
             <div class="ml-auto mt-6 w-full text-right">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Siguiente</button>
-                <button class="reset-compra bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    Cancelar Compra
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="button-domicilio">
+                    Continuar
+                </button>
+                <button class="close-modal bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    Cerrar
                 </button>
             </div>
-            </form>
         </div>
         <!-- End Form Domicilio -->
 
         <!-- Form Pago -->
-        <div class="w-full md:w-10/12 mx-auto p-5 hidden" id="step3">
-            <form name="step3">
+        <div class="w-full md:w-10/12 mx-auto p-5 hidden" id="form-pago">
             <p class="text-gray-800 text-lg font-semibold py-3">Pago del Pedido</p>
             <div class="-mx-3 md:flex mb-6">
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Número de Tarjeta
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="numeroTarjeta" name="numeroTarjeta" type="text" placeholder="Número de Tarjeta" maxlength="16">
-                    
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Número de Tarjeta">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Nombre y Apellido
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="titular" name="titular" type="text" placeholder="Nombre y Apellido">
-                    
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Nombre y Apellido">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
             </div>
 
@@ -327,15 +326,15 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Fecha Expiración
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="fechaExpiracion" name="fechaExpiracion" type="text" placeholder="Fecha Expiración" maxlength="4">
-                    
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Fecha Expiración">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     Cód. de Seguridad
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="codigo" name="codigo" type="text" placeholder="Cód. de Seguridad" maxlength="3">
-                    
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="Cód. de Seguridad">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
             </div>
 
@@ -344,44 +343,21 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                     DNI del Titular
                     </label>
-                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="dni" name="dni" type="text" placeholder="DNI del Titular">
-                    
+                    <input class="appearance-none block w-full bg-grey-lighter text-gray-700 border border-red rounded py-2 px-4 mb-1" id="grid-first-name" type="text" placeholder="DNI del Titular">
+                    <p class="text-red-600 text-xs italic">Please fill out this field.</p>
                 </div>
             </div>
 
             <div class="ml-auto mt-6 w-full text-right">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Pagar</button>
-                <button class="reset-compra bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    Cancelar Compra
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="button-pago">
+                    Pagar
+                </button>
+                <button class="close-modal bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    Cerrar
                 </button>
             </div>
-            </form>
         </div>
         <!-- End Form Pago -->
-
-        <!-- Finish proceso -->
-        <div class="hidden w-full bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 shadow-md my-2" role="alert" id="step4">
-            <div class="p-2 text-center w-full">
-                <div class="inline-flex w-full items-center justify-center bg-white leading-none text-purple-600 text-center p-2 shadow text-teal text-sm">                  
-                  <span class="inline-flex px-2 font-semibold text-md">¡Compra Finalizada!</span>
-                </div>
-                <div class="w-full bg-gray-100 justify-star mt-3 text-left p-4">
-                    <p class="font-semibold text-lg">Resumen de Compra</p>
-                    <div class="w-full mt-3" id="card-resumen">
-                                        
-                    </div>
-                    <div class="mt-4">
-                        <p class="text-gray-500 text-xs">El resumen completo te llegará por email.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="ml-auto mt-6 w-full text-right">                
-                <button class="close-modal bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" id="fin-compra">
-                    Finalizar
-                </button>
-            </div>
-        </div>           
-        <!-- end finish proceso -->
 
         <!-- body carro sin productos -->
         <div class="hidden w-full bg-teal-lightest border-t-4 border-teal rounded-b text-teal-darkest px-4 py-3 shadow-md my-2" role="alert" id="body-modal-info">
@@ -395,6 +371,14 @@
         <!-- end body carro sin productos -->
         <hr>
 
+        <!-- <div class="ml-auto mt-6">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="button-pedir">
+                Pedir
+            </button>
+            <button class="close-modal bg-transparent hover:bg-gray-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                Close
+            </button>
+        </div> -->
     </div>
     </div>
 </div>
@@ -411,7 +395,6 @@
 <script src="/public/js/data.json"></script>
 <script src="/public/js/domBuilder.js"></script>
 <script src="/public/js/functions.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
 <script src="/public/js/step.js"></script>
 <script src="/public/js/app.js"></script>
 

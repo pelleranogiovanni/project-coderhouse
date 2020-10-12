@@ -8,7 +8,7 @@ const DOMBuilder = function(){
         products.forEach(element => {
 
             card.innerHTML += `
-            <div class="md:w-1/3 p-4 w-full my-6">
+            <div class="md:w-1/3 p-4 w-full my-6" data-aos="flip-left">
                 <a class="block relative h-48 rounded overflow-hidden">
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105" src="${element.image}">
                 </a>
@@ -36,14 +36,14 @@ const DOMBuilder = function(){
         
         selectedProductsContainer.innerHTML += `
         <tr>                            
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+            <td class=" py-2 whitespace-no-wrap border-b border-gray-500">
                 <div class="text-sm leading-5 text-blue-900">${selectedProduct.name}</div>
             </td>
-            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+            <td class=" py-2 whitespace-no-wrap border-b border-gray-500">
                 <div class="text-sm leading-5 text-blue-900">${selectedProduct.price}</div>
             </td>
-            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                <button id="${selectedProduct.id}" class="btnProductDelete px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">Eliminar</button>
+            <td class=" py-2 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
+                <button id="${selectedProduct.id}" class="btnProductDelete px-5 py-1 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">x</button>
             </td>
         </tr>
         `;

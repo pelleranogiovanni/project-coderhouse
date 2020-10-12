@@ -40,7 +40,7 @@ function removeItemOrder(){
         
         selectedProducts.forEach(element => {
             if(id == element.id){
-            //    console.log(element.name)
+        
                var index = selectedProducts.map(product => product.name).indexOf(element.name)
                selectedProducts.splice(index, 1);
             }
@@ -56,24 +56,10 @@ function removeItemOrder(){
 
 
 
-//funcion limpiar pedido completo con jQuery
+//limpiar pedido completo con jQuery
 $('#clearOrder').click( () => {
-    selectedProducts = [];    
-    totalPedidoCart = selectedProducts.length;
-    pTotalCart.textContent = totalPedidoCart;
-
-    let new_tbody = document.createElement('tbody');
-    new_tbody.setAttribute('id', 'selectedProductsContainer');
-    let old_tbody = document.getElementById('selectedProductsContainer');
-    let tableNode = document.getElementById('table-container');
-
-    //vacío la variable totalPedido y imppio el contenido total
-    pTotal = document.getElementById('totalPedido');
-    pTotal.textContent = '';
-    totalPedido = 0;
-    
-    tableNode.replaceChild(new_tbody, old_tbody);
-
+    // llamo a funcion para vaciar el carrito
+    limpiarCarro();
 
     //llamo al toast notification para informar vaciar carrito
     $('#toast-notification').fadeIn();     
@@ -125,18 +111,29 @@ $(document).ready(() => {
 });
 
 
+// Llmado funcion reset compra
+$('body').on('click', '.reset-compra', function(){
+    resetCompra(); 
+});
+
+
+
 //Script Modal
 const showModal = document.querySelector('.show-modal');
 const closeModal = document.querySelectorAll('.close-modal');
 
+
 showModal.addEventListener('click', function (){
-    $('.modal').fadeIn();
-  
+    // $('.modal').fadeIn();
+    $('.modal').removeClass('hidden');
+
 });
+
 
 closeModal.forEach(close => {
   close.addEventListener('click', function (){
-    $('.modal').fadeOut();
+    // $('.modal').fadeOut();
+    $('.modal').addClass('hidden');
   });
 });
 //End Modal
