@@ -77,7 +77,7 @@ function resumenCompra(fomrFullData){
         </div>
         <div class="flex justify-between md:w-1/2">
             <p>Total compra</p>
-            <p>${fomrFullData.totalPedido}</p>
+            <p>${'$ ' + fomrFullData.totalPedido}</p>
         </div>        
         `;
 }

@@ -68,7 +68,8 @@ $('document').ready(()=> {
             },
             dniCliente: {
                 required: true,
-                minlength: 7
+                minlength: 7,
+                number: true
             },
             telefono: {
                 required: true,
@@ -90,7 +91,8 @@ $('document').ready(()=> {
             },
             dniCliente: {
                 required: 'El campo es obligatorio',
-                minlength: 'Ingrese al menos 7 caracteres'
+                minlength: 'Ingrese al menos 7 caracteres',
+                number: 'Debe ser un número'
             },
             telefono: {
                 required: 'El campo es obligatorio',
@@ -99,7 +101,7 @@ $('document').ready(()=> {
             email: {
                 required: 'El campo email es obligatorio',
                 email: 'Ingrese un email valido'
-            }
+            },
         },
         submitHandler: (form) => {
             form1 = form; //almaceno el fomr en la variale global
@@ -122,10 +124,12 @@ $('document').ready(()=> {
                 minlength: 5
             },
             numeroDomicilio: {
-                required: true,                
+                required: true,
+                number: true            
             },
             piso: {                
-                minlength: 1
+                minlength: 1,
+                number: true
             }
         }, 
         messages: {
@@ -135,6 +139,10 @@ $('document').ready(()=> {
             },
             numeroDomicilio: {
                 required: 'El campo es obligatorio',
+                number: 'Debe ser un número'
+            },
+            piso: {
+                number: 'Debe ser un número'
             }          
         },
         submitHandler: (form) => {
@@ -153,12 +161,14 @@ $('document').ready(()=> {
         rules: {
             dni: {
                 required: true,
-                minlength: 8
+                minlength: 8,
+                number: true
             },
             numeroTarjeta: {
                 required: true,
                 minlength: 16,
-                maxlength: 16
+                maxlength: 16,
+                number: true
             },
             titular: {
                 required: true,
@@ -166,22 +176,26 @@ $('document').ready(()=> {
             },
             fechaExpiracion: {
                 required: true,
-                minlength: 4
+                minlength: 4,
+                number: true
             },
             codigo: {
                 required: true,
-                minlength: 3
+                minlength: 3,
+                number: true
             },
         }, 
         messages: {
             dni: {
                 required: 'El campo es obligatorio',
-                minlength: 'Ingrese al menos 8 caracteres'
+                minlength: 'Ingrese al menos 8 caracteres',
+                number: 'Debe ser un número'
             },
             numeroTarjeta: {
                 required: 'El campo es obligatorio',
                 minlength: 'Debe tener 16 caracteres',
-                maxlength: 'Debe tener 16 caracteres'
+                maxlength: 'Debe tener 16 caracteres',
+                number: 'Debe ser un número'
             },
             titular: {
                 required: 'El campo es obligatorio',
@@ -189,11 +203,13 @@ $('document').ready(()=> {
             },  
             fechaExpiracion: {
                 required: 'El campo es obligatorio',
-                minlength: 'Ingrese mes y año (0320)'
+                minlength: 'Ingrese mes y año (0320)',
+                number: 'Debe ser un número'
             },
             codigo: {
                 required: 'El campo es obligatorio',
-                minlength: 'Ingrese 3 caracteres (012)'
+                minlength: 'Ingrese 3 caracteres (012)',
+                number: 'Debe ser un número'
             },           
         },
         submitHandler: (form) => {
